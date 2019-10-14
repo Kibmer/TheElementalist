@@ -4,15 +4,11 @@ using UnityEngine;
 
 public class ShootTheBall : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private Rigidbody rb;
+
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        rb = GetComponent<Rigidbody>();
+        rb.AddForce(0, 500, 2000);
     }
 }
