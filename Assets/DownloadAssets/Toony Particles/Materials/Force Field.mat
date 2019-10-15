@@ -40,10 +40,10 @@ Material:
     m_Floats:
     - _Depth: 0.49
     - _Depth_Intensity: 8
-    - _Emission_Power: 0.5
+    - _Emission_Power: 0
     - _Emission_Speed: 0.2
     - _Emission_Tiling: 20
-    - _Power: 0.57
+    - _Power: 3
     - _Speed: 0.05
     m_Colors:
     - _Color: {r: 0, g: 0.2380742, b: 0.72178024, a: 1}

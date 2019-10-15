@@ -86,22 +86,6 @@ public class LeftHandGrab : MonoBehaviour
         }
     }
 
-    public void GrabSack()
-    {
-        if (OnFixedDestory != null && !oneRespwan)
-        {
-            OnFixedDestory();
-            oneRespwan = true;
-        }
-        grabObject = colObject;
-        colObject = null;
-
-        if (grabObject != null && GetComponent<FixedJoint>() == null)
-        {
-            AddFixedJointComponet().connectedBody = grabObject.GetComponent<Rigidbody>();
-        }
-
-    }
 
     private FixedJoint AddFixedJointComponet()
     {
@@ -136,22 +120,6 @@ public class LeftHandGrab : MonoBehaviour
         }
     }
 
-    public void ReleasSack()
-    {
-        if (this.gameObject.GetComponent<FixedJoint>() != null)
-        {
-            if (grabObject != null)
-            {
-                GetComponent<FixedJoint>().connectedBody = null;
-                Destroy(GetComponent<FixedJoint>());
-
-                grabObject.GetComponent<Rigidbody>().velocity = pose.GetVelocity();
-                grabObject.GetComponent<Rigidbody>().angularVelocity = pose.GetAngularVelocity();
-
-                grabObject = null;
-            }
-        }
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (canRlease_Obj || other.GetComponent<Rigidbody>() == null) return; // 이미 손에 쥔 객체가 있으면 돌아가라
