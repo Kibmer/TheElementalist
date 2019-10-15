@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/DownloadAssets/StandardAssets/Scenes/SampleScene.unity
-    guid: d1c3109bdb54ad54c8a2b2838528e640
+    path: Assets/01.Scenes/InitPhoton.unity
+    guid: d067f87c6468eed44b6e5551421cf8e4
+  - enabled: 1
+    path: Assets/01.Scenes/PhysicsTest.unity
+    guid: fd1e80aeadf769647b9e80a1b800b127
   m_configObjects: {}
