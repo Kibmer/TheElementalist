@@ -9,6 +9,7 @@ TagManager:
   - Bullet
   - projectile
   - RIGHTHAND
+  - CAMERARIG
   layers:
   - Default
   - TransparentFX
