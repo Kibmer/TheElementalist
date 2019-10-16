@@ -8,7 +8,7 @@ TagManager:
   - FxTemporaire
   - Bullet
   - projectile
-  - ELEMENT
+  - RIGHTHAND
   layers:
   - Default
   - TransparentFX
