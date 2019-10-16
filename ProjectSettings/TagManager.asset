@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - GRABBABLE
+  - FxTemporaire
+  - Bullet
+  - projectile
+  - ELEMENT
   layers:
   - Default
   - TransparentFX
