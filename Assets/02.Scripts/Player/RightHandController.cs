@@ -66,6 +66,7 @@ public class RightHandController : MonoBehaviour
     {
         if (attack != null)
             Destroy(attack);
+            
     }
 
     void Attack()
