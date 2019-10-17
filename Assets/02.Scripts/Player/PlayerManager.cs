@@ -40,7 +40,7 @@ public class PlayerManager : MonoBehaviour
             //닫기ui
             CloseUI();
         }
-        if(Trigger.GetStateDown(righthand) && (pose.GetLocalRotation(righthand).eulerAngles.z >= 250f && pose.GetLocalRotation(righthand).eulerAngles.z <= 290f ))
+        if(Trigger.GetStateDown(righthand) && (pose.GetLocalRotation(righthand).eulerAngles.z >= 230f && pose.GetLocalRotation(righthand).eulerAngles.z <= 270f ))
         {
             //소환
             Summon();

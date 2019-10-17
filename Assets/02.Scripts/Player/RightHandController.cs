@@ -74,6 +74,13 @@ public class RightHandController : MonoBehaviour
         attackRb.isKinematic = false;
         attack.transform.SetParent(null);
         attackRb.velocity = pos.GetVelocity(righthand)*3f;
-
+        if (PlayerManager.element == "ICE")
+        {
+            attack.GetComponent<Iceball>().enabled = true;
+        }
+        else if (PlayerManager.element == "FIRE")
+        {
+            attack.GetComponent<Fireball>().enabled = true;
+        }
     }
 }

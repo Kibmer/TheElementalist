@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 129987926471278513}
   - component: {fileID: 129987926471278526}
   - component: {fileID: 4482058365441420244}
-  - component: {fileID: 2421524651485358573}
   m_Layer: 0
   m_Name: ICE
   m_TagString: Untagged
@@ -4771,18 +4770,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.51
   m_Center: {x: -0.047964394, y: 0.033023298, z: -0.016776443}
---- !u!114 &2421524651485358573
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 129987926471278527}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8875f7656f07d154aac77faf7f92e957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1221944589915135300
 GameObject:
   m_ObjectHideFlags: 0
@@ -23900,7 +23887,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4482058365885819478}
   - component: {fileID: 4482058365885819473}
-  - component: {fileID: 5120398122748013633}
   m_Layer: 0
   m_Name: FIRE
   m_TagString: Untagged
@@ -23936,18 +23922,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.05
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5120398122748013633
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4482058365885819475}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8875f7656f07d154aac77faf7f92e957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &4865032373445933285
 GameObject:
   m_ObjectHideFlags: 0

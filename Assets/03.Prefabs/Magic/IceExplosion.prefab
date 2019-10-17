@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 128306035991740311}
   - component: {fileID: 128306035991740310}
   - component: {fileID: 128306035991740313}
+  - component: {fileID: -587668406157135662}
   m_Layer: 0
   m_Name: IceExplosion
   m_TagString: Untagged
@@ -4815,6 +4816,18 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-587668406157135662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128306035991740312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83f9ec2f6575f44097d4159fe8461d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &514943863141975132
 GameObject:
   m_ObjectHideFlags: 0
