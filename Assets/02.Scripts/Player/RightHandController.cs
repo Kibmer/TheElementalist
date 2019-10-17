@@ -12,6 +12,7 @@ public class RightHandController : MonoBehaviour
     public GameObject prefab_ui_element;
     public GameObject prefab_fireBall;
     public GameObject prefab_iceBall;
+    public GameObject prefab_cannon;
 
     private GameObject currentUI;
     private GameObject attack;
@@ -22,51 +23,60 @@ public class RightHandController : MonoBehaviour
     {
         PlayerManager.Summon += Summon;
         PlayerManager.CancelAttack += CancelAttack;
-        PlayerManager.Attack += Attack;
+        PlayerManager.MagicAttack += MagicAttack;
+        PlayerManager.WeaponEquip += WeaponEquip;
     }
     void OnDisable()
     {
         PlayerManager.Summon -= Summon;
         PlayerManager.CancelAttack -= CancelAttack;
-        PlayerManager.Attack -= Attack;
+        PlayerManager.MagicAttack -= MagicAttack;
+        PlayerManager.WeaponEquip -= WeaponEquip;
     }
 
 
-    
-
     void Summon()
     {
-        if (PlayerManager.element == "ICE")
+        if (PlayerManager.Weapon == "ICE")
         {
             CancelAttack();
             attack = Instantiate(prefab_iceBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
-        else if (PlayerManager.element == "FIRE")
+        else if (PlayerManager.Weapon == "FIRE")
         {
             CancelAttack();
             attack = Instantiate(prefab_fireBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
     }
-    void CancelAttack()
+    void WeaponEquip()
     {
-        if (attack != null)
-            Destroy(attack);
-            
+        prefab_cannon.SetActive(true);
     }
 
-    void Attack()
+    void MagicAttack()
     {
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
         attackRb.isKinematic = false;
         attack.transform.SetParent(null);
         attackRb.velocity = pos.GetVelocity(righthand)*3f;
-        if (PlayerManager.element == "ICE")
+        if (PlayerManager.Weapon == "ICE")
         {
             attack.GetComponent<Iceball>().enabled = true;
         }
-        else if (PlayerManager.element == "FIRE")
+        else if (PlayerManager.Weapon == "FIRE")
         {
             attack.GetComponent<Fireball>().enabled = true;
+        }
+    }
+    
+
+    void CancelAttack()
+    {
+        prefab_cannon.SetActive(false);
+
+        if (attack != null)
+        {
+            Destroy(attack);
         }
     }
 }

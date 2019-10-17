@@ -19482,7 +19482,7 @@ GameObject:
   - component: {fileID: 2727590638423719815}
   - component: {fileID: 7863944796762905603}
   m_Layer: 0
-  m_Name: Cannon (1)
+  m_Name: CANNON
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
