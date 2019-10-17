@@ -89,19 +89,27 @@ namespace Valve.VR
             }
         }
         
-        public virtual SteamVR_Action_Boolean SnapTurnLeft
+        public virtual SteamVR_Action_Vector2 TouchPadPos
         {
             get
             {
-                return SteamVR_Actions.default_SnapTurnLeft;
+                return SteamVR_Actions.default_TouchPadPos;
             }
         }
         
-        public virtual SteamVR_Action_Boolean SnapTurnRight
+        public virtual SteamVR_Action_Boolean Menu
         {
             get
             {
-                return SteamVR_Actions.default_SnapTurnRight;
+                return SteamVR_Actions.default_Menu;
+            }
+        }
+        
+        public virtual SteamVR_Action_Boolean TouchPadClick
+        {
+            get
+            {
+                return SteamVR_Actions.default_TouchPadClick;
             }
         }
         

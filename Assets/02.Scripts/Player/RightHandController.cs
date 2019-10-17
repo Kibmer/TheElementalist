@@ -20,37 +20,22 @@ public class RightHandController : MonoBehaviour
 
     void OnEnable()
     {
-        PlayerManager.OpenUI += OpenUI;
-        PlayerManager.CloseUI += CloseUI;
         PlayerManager.Summon += Summon;
         PlayerManager.CancelAttack += CancelAttack;
         PlayerManager.Attack += Attack;
     }
     void OnDisable()
     {
-        PlayerManager.OpenUI -= OpenUI;
-        PlayerManager.CloseUI -= CloseUI;
         PlayerManager.Summon -= Summon;
         PlayerManager.CancelAttack -= CancelAttack;
         PlayerManager.Attack -= Attack;
     }
 
 
-
-    void OpenUI()
-    {
-        currentUI = Instantiate(prefab_ui_element, transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0));
-    }
-
-    void CloseUI()
-    {
-        if (currentUI == null) return;
-        Destroy(currentUI);
-    }
+    
 
     void Summon()
     {
-
         if (PlayerManager.element == "ICE")
         {
             CancelAttack();

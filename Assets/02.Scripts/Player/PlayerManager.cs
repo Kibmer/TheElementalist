@@ -21,8 +21,12 @@ public class PlayerManager : MonoBehaviour
     public SteamVR_Action_Boolean grab = SteamVR_Actions.default_GrabGrip;
     public SteamVR_Action_Boolean Trigger = SteamVR_Actions.default_InteractUI;
     public SteamVR_Action_Pose pose = SteamVR_Actions.default_Pose;
+    public SteamVR_Action_Boolean touchpadClick = SteamVR_Actions.default_TouchPadClick;
+    public SteamVR_Action_Vector2 touchpadPos = SteamVR_Actions.default_TouchPadPos;
 
-    
+
+
+
 
     private string el; 
     private bool isSummon = false;
@@ -30,12 +34,12 @@ public class PlayerManager : MonoBehaviour
     
     void Update()
     {
-        if (grab.GetStateDown(righthand))
+        if (touchpadClick.GetStateDown(lefthand))
         {
             //오픈ui
             OpenUI();
         }
-        else if (grab.GetStateUp(righthand))
+        else if (touchpadClick.GetStateUp(lefthand))
         {
             //닫기ui
             CloseUI();
