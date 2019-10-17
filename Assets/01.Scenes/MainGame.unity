@@ -1834,8 +1834,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce45c6e42b3476543b1b68f547933293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPoint1: {fileID: 0}
-  spawnPoint2: {fileID: 0}
+  spawnPoint1: {fileID: 1967726958}
+  spawnPoint2: {fileID: 1834447686}
   myTurn: 0
   turnFlames:
   - {fileID: 371654015972311815}

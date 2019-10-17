@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Photon.Realtime;
+using Hashtable = ExitGames.Client.Photon.Hashtable;
 
 public class PhotonInit : MonoBehaviourPunCallbacks
 {
@@ -33,8 +34,11 @@ public class PhotonInit : MonoBehaviourPunCallbacks
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("Failed Join room !!!");
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.CustomRoomProperties = new Hashtable() { { "Ppos", true } };
+        roomOptions.MaxPlayers = this.maxPlayer;
         PhotonNetwork.CreateRoom(null
-                                , new RoomOptions { MaxPlayers = this.maxPlayer });
+                                , roomOptions);
     }
 
     public override void OnJoinedRoom()

@@ -150,7 +150,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   userId: Kibmer
-  maxPlayer: 20
+  maxPlayer: 2
   SceneIndexToMove: 1
 --- !u!4 &114999869
 Transform:
