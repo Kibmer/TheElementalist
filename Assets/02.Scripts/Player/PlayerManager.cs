@@ -24,10 +24,6 @@ public class PlayerManager : MonoBehaviour
     public SteamVR_Action_Boolean touchpadClick = SteamVR_Actions.default_TouchPadClick;
     public SteamVR_Action_Vector2 touchpadPos = SteamVR_Actions.default_TouchPadPos;
 
-
-
-
-
     private string el; 
     private bool isSummon = false;
     

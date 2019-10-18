@@ -10,8 +10,10 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public static MGManager instance = null;
 
     private Transform cameraRigTr;
-    public Transform spawnPoint1;
-    public Transform spawnPoint2;
+    public GameObject[] playerSpawnPoint;
+    public GameObject[] mapSpawnPoint;
+    public GameObject MapPrefab;
+    private List<GameObject> Maps;
 
     public bool myTurn = false;
     public GameObject[] turnFlames;
@@ -40,6 +42,9 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         }
 
         cameraRigTr = GameObject.FindWithTag("CAMERARIG").transform;
+        playerSpawnPoint = GameObject.FindGameObjectsWithTag("PLAYERSPAWNPOINT");
+        mapSpawnPoint = GameObject.FindGameObjectsWithTag("MAPSPAWNPOINT");
+        Maps = new List<GameObject>();
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
@@ -63,12 +68,10 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
             //플레이어를 비어있는 위치에 배치
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
-            {
-                cameraRigTr.position = spawnPoint1.position;
-            }
+                cameraRigTr.position = playerSpawnPoint[0].transform.position;
             else
             {
-                cameraRigTr.position = spawnPoint2.position;
+                cameraRigTr.position = playerSpawnPoint[1].transform.position;
                 cameraRigTr.Rotate(0, 180, 0);
             }
         }
@@ -79,31 +82,80 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
             {
-                cameraRigTr.position = spawnPoint2.position;
+                cameraRigTr.position = playerSpawnPoint[1].transform.position;
                 cameraRigTr.Rotate(0, 180, 0);
             }
             else
-            {
-                cameraRigTr.position = spawnPoint1.position;
-            }
+                cameraRigTr.position = playerSpawnPoint[0].transform.position;
         }
 
-
-
-        SetTurnFlame();
-        Vector3 cannonSpawnPos = new Vector3(0, 0, Vector3.forward.z * 1.5f);
+        Vector3 cannonSpawnPos = new Vector3(0, 0, (cameraRigTr.TransformVector(Vector3.forward) * 1.5f).z);
         PhotonNetwork.Instantiate("Cannon"
                     , cameraRigTr.position + cannonSpawnPos
                     , cameraRigTr.rotation
                     , 0);
+        // ResetStage();
+        SetTurnFlame();
+        // Invoke("Sync", 10f);
+    }
+
+    void Sync(){
+        if(PhotonNetwork.IsMasterClient)
+        {
+            photonView.RPC("SyncStage"
+                            , RpcTarget.Others
+                            , (object)Maps[0].GetComponentsInChildren<Transform>()
+                            , (object)Maps[1].GetComponentsInChildren<Transform>());
+            Debug.Log("Sync start");
+        }
+    }
+
+    public void ResetStage(){
+        foreach (var map in Maps)
+        {
+            Destroy(map);
+        }
+        Maps.Clear();
+        Maps.Add(Instantiate(MapPrefab
+                    , mapSpawnPoint[0].transform.position
+                    , Quaternion.identity
+                    , GameObject.Find("Map").transform));
+        Maps.Add(Instantiate(MapPrefab
+                    , mapSpawnPoint[1].transform.position
+                    , Quaternion.Euler(0, 180, 0)
+                    , GameObject.Find("Map").transform));
+    }
+
+    [PunRPC]
+    private void SyncStage(object[] mapTr1, object[] mapTr2){
+        Transform[] curMapTr1 = Maps[0].GetComponentsInChildren<Transform>();
+        Transform[] curMapTr2 = Maps[1].GetComponentsInChildren<Transform>();
+        Transform[] newMapTr1 = (Transform[])mapTr1;
+        Transform[] newMapTr2 = (Transform[])mapTr2;
+        int i = 0;
+        foreach (var tr in curMapTr1)
+        {
+            tr.position = newMapTr1[i].position;
+            tr.rotation = newMapTr1[i].rotation;
+            i++;
+        }
+        i = 0;
+        foreach (var tr in curMapTr2)
+        {
+            tr.position = newMapTr2[i].position;
+            tr.rotation = newMapTr2[i].rotation;
+            i++;
+        }
+        Debug.Log("Sync Done");
     }
 
     public void EndTurn()
     {
         myTurn = !myTurn;
+        SetTurnFlame();
     }
 
-    public void SetTurnFlame()
+    private void SetTurnFlame()
     {
         if (myTurn)
         {

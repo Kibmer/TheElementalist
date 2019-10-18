@@ -6,6 +6,9 @@ TagManager:
   tags:
   - CAMERARIG
   - RIGHTHAND
+  - GRABBABLE
+  - PLAYERSPAWNPOINT
+  - MAPSPAWNPOINT
   layers:
   - Default
   - TransparentFX
