@@ -5,6 +5,14 @@ TagManager:
   serializedVersion: 2
   tags:
   - GRABBABLE
+  - DEBRIS
+  - LOD
+  - STONEBLOCK
+  - M_LOD
+  - M_DEBRIS
+  - M_LOD1
+  - M_LOD2
+  - GROUND
   layers:
   - Default
   - TransparentFX
