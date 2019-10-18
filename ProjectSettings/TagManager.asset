@@ -17,6 +17,7 @@ TagManager:
   - GROUND
   - PLAYERSPAWNPOINT
   - MAPSPAWNPOINT
+  - TURNSTONE
   layers:
   - Default
   - TransparentFX
