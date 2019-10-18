@@ -239,12 +239,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 663179416}
+      objectReference: {fileID: 492444633}
     - target: {fileID: 5647908791296301518, guid: f3d07a2f230315a4889079e27cfe7886,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1913399531}
+      objectReference: {fileID: 1750525789}
+    - target: {fileID: 5631305993412421460, guid: f3d07a2f230315a4889079e27cfe7886,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5728193941914867514, guid: f3d07a2f230315a4889079e27cfe7886,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5647908791082616240, guid: f3d07a2f230315a4889079e27cfe7886, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f3d07a2f230315a4889079e27cfe7886, type: 3}
@@ -407,7 +417,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!21 &663179416
+--- !u!21 &492444633
 Material:
   serializedVersion: 6
   m_ObjectHideFlags: 0
@@ -631,7 +641,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1}
   m_SizeDelta: {x: 4, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!43 &1913399531
+--- !u!43 &1750525789
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
