@@ -40,7 +40,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
     {
         if (!photonView.IsMine) return;
 
-        photonView.RPC("SummonRPC", RpcTarget.All);   
+        photonView.RPC("SummonRPC", RpcTarget.All);
     }
 
     [PunRPC]
@@ -61,18 +61,18 @@ public class RightHandController : MonoBehaviourPunCallbacks
     void MagicAttack()
     {
         if (!photonView.IsMine) return;
-        
+
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
         attackRb.velocity = pos.GetVelocity(righthand) * 3f;
 
-        photonView.RPC("MagicAttackRPC", RpcTarget.All, attack.transform ,attackRb.velocity);
+        photonView.RPC("MagicAttackRPC", RpcTarget.All, attack.transform.position, attackRb.velocity);
     }
 
     [PunRPC]
     void MagicAttackRPC(Vector3 pos, Vector3 vel)
     {
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
-        
+
         attackRb.isKinematic = false;
         attack.transform.SetParent(null);
         attack.transform.position = pos;
@@ -92,7 +92,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
 
         prefab_cannon.SetActive(true);
     }
-    
+
     void CancelAttack()
     {
         prefab_cannon.SetActive(false);

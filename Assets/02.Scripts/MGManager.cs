@@ -67,11 +67,6 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         {
             turnFlames.Add(turnStone.GetComponentInChildren<ParticleSystem>(true).gameObject);
         }
-        if(photonView.IsMine)
-        {
-            cameraRigTr.Find("Camera").GetComponent<Camera>().enabled = true;
-            cameraRigTr.Find("Camera").GetComponent<AudioListener>().enabled = true;
-        }
 
         Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
         //다른 플레이어가 방에 없을때

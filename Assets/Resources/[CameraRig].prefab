@@ -96,6 +96,7 @@ GameObject:
   - component: {fileID: 504351975612378191}
   - component: {fileID: 504351975622096175}
   - component: {fileID: 504351975432319025}
+  - component: {fileID: 1211815992649044578}
   - component: {fileID: 6831156277438633331}
   - component: {fileID: 6613957580528526460}
   m_Layer: 0
@@ -227,6 +228,18 @@ MonoBehaviour:
   touchpadPos:
     actionPath: /actions/default/in/TouchPadPos
     needsReinit: 0
+--- !u!114 &1211815992649044578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 504351975611418477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 31a7ffbb10a5ef34e8f009847316a764, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6831156277438633331
 MonoBehaviour:
   m_ObjectHideFlags: 0
