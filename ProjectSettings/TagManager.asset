@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - CAMERARIG
+  - RIGHTHAND
   - GRABBABLE
   - DEBRIS
   - LOD
@@ -13,6 +15,8 @@ TagManager:
   - M_LOD1
   - M_LOD2
   - GROUND
+  - PLAYERSPAWNPOINT
+  - MAPSPAWNPOINT
   layers:
   - Default
   - TransparentFX
@@ -22,7 +26,7 @@ TagManager:
   - UI
   - 
   - 
-  - PostProcessing
+  - 
   - 
   - 
   - 
