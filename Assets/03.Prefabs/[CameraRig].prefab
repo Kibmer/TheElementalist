@@ -183,6 +183,12 @@ MonoBehaviour:
   pose:
     actionPath: /actions/default/in/Pose
     needsReinit: 0
+  touchpadClick:
+    actionPath: /actions/default/in/TouchPadClick
+    needsReinit: 0
+  touchpadPos:
+    actionPath: /actions/default/in/TouchPadPos
+    needsReinit: 0
 --- !u!1 &5647908791299367324
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,6 +281,7 @@ MonoBehaviour:
     type: 3}
   prefab_iceBall: {fileID: 3476644337431332509, guid: bb67937ce8ac34b41b6d6b471558488e,
     type: 3}
+  prefab_cannon: {fileID: 0}
 --- !u!1 &5647908791299407496
 GameObject:
   m_ObjectHideFlags: 0
@@ -418,6 +425,7 @@ MonoBehaviour:
   haptic:
     actionPath: /actions/default/out/Haptic
     needsReinit: 0
+  prefab_ui_element: {fileID: 0}
 --- !u!1 &5648334850681568016
 GameObject:
   m_ObjectHideFlags: 0
@@ -457,7 +465,7 @@ Camera:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5648334850681568016}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
@@ -500,7 +508,7 @@ AudioListener:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5648334850681568016}
-  m_Enabled: 1
+  m_Enabled: 0
 --- !u!54 &5647908791477601840
 Rigidbody:
   m_ObjectHideFlags: 0

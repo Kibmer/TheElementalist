@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class RightHandController : MonoBehaviour
+public class RightHandController : MonoBehaviourPunCallbacks
 {
     public SteamVR_Action_Pose pos = SteamVR_Actions.default_Pose;
     public SteamVR_Input_Sources righthand = SteamVR_Input_Sources.RightHand;
@@ -34,8 +36,15 @@ public class RightHandController : MonoBehaviour
         PlayerManager.WeaponEquip -= WeaponEquip;
     }
 
-
     void Summon()
+    {
+        if (!photonView.IsMine) return;
+
+        photonView.RPC("SummonRPC", RpcTarget.All);   
+    }
+
+    [PunRPC]
+    void SummonRPC()
     {
         if (PlayerManager.Weapon == "ICE")
         {
@@ -48,17 +57,26 @@ public class RightHandController : MonoBehaviour
             attack = Instantiate(prefab_fireBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
     }
-    void WeaponEquip()
-    {
-        prefab_cannon.SetActive(true);
-    }
 
     void MagicAttack()
     {
+        if (!photonView.IsMine) return;
+        
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
+        attackRb.velocity = pos.GetVelocity(righthand) * 3f;
+
+        photonView.RPC("MagicAttackRPC", RpcTarget.All, attack.transform ,attackRb.velocity);
+    }
+
+    [PunRPC]
+    void MagicAttackRPC(Vector3 pos, Vector3 vel)
+    {
+        Rigidbody attackRb = attack.GetComponent<Rigidbody>();
+        
         attackRb.isKinematic = false;
         attack.transform.SetParent(null);
-        attackRb.velocity = pos.GetVelocity(righthand)*3f;
+        attack.transform.position = pos;
+        attackRb.velocity = vel;
         if (PlayerManager.Weapon == "ICE")
         {
             attack.GetComponent<Iceball>().enabled = true;
@@ -68,8 +86,13 @@ public class RightHandController : MonoBehaviour
             attack.GetComponent<Fireball>().enabled = true;
         }
     }
-    
 
+    void WeaponEquip()
+    {
+
+        prefab_cannon.SetActive(true);
+    }
+    
     void CancelAttack()
     {
         prefab_cannon.SetActive(false);

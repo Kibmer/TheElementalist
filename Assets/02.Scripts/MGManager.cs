@@ -15,8 +15,8 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public GameObject MapPrefab;
     private List<GameObject> Maps;
 
-    public bool myTurn = false;
-    public GameObject[] turnFlames;
+    public bool isMyTurn = false;
+    private List<GameObject> turnFlames;
 
     public override void OnEnable()
     {
@@ -41,10 +41,10 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             Destroy(gameObject);
         }
 
-        cameraRigTr = GameObject.FindWithTag("CAMERARIG").transform;
         playerSpawnPoint = GameObject.FindGameObjectsWithTag("PLAYERSPAWNPOINT");
         mapSpawnPoint = GameObject.FindGameObjectsWithTag("MAPSPAWNPOINT");
         Maps = new List<GameObject>();
+        turnFlames = new List<GameObject>();
     }
 
     public override void OnMasterClientSwitched(Player newMasterClient)
@@ -60,13 +60,26 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     private void Start()
     {
+        //카메라 리그를 생성
+        cameraRigTr = PhotonNetwork.Instantiate("[CameraRig]", Vector3.zero, Quaternion.identity, 0).transform;
+        GameObject[] turnStones = GameObject.FindGameObjectsWithTag("TURNSTONE");
+        foreach(var turnStone in turnStones)
+        {
+            turnFlames.Add(turnStone.GetComponentInChildren<ParticleSystem>(true).gameObject);
+        }
+        if(photonView.IsMine)
+        {
+            cameraRigTr.Find("Camera").GetComponent<Camera>().enabled = true;
+            cameraRigTr.Find("Camera").GetComponent<AudioListener>().enabled = true;
+        }
+
         Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
+        //다른 플레이어가 방에 없을때
         if (PhotonNetwork.CountOfPlayersInRooms == 0)
         {
-            //다른 플레이어가 방에 없을때
-            MGManager.instance.myTurn = true;
+            MGManager.instance.isMyTurn = true;
 
-            //플레이어를 비어있는 위치에 배치
+            //카메라 리그를 비어있는 위치에 배치
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
                 cameraRigTr.position = playerSpawnPoint[0].transform.position;
             else
@@ -75,10 +88,10 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
                 cameraRigTr.Rotate(0, 180, 0);
             }
         }
+        //다른 플레이어가 방에 있을때
         else
         {
-            //다른 플레이어가 방에 있을때
-            MGManager.instance.myTurn = false;
+            MGManager.instance.isMyTurn = false;
 
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
             {
@@ -94,13 +107,16 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
                     , cameraRigTr.position + cannonSpawnPos
                     , cameraRigTr.rotation
                     , 0);
+
+
         // ResetStage();
         SetTurnFlame();
         // Invoke("Sync", 10f);
     }
 
-    void Sync(){
-        if(PhotonNetwork.IsMasterClient)
+    void Sync()
+    {
+        if (PhotonNetwork.IsMasterClient)
         {
             photonView.RPC("SyncStage"
                             , RpcTarget.Others
@@ -110,7 +126,8 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         }
     }
 
-    public void ResetStage(){
+    public void ResetStage()
+    {
         foreach (var map in Maps)
         {
             Destroy(map);
@@ -127,7 +144,8 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     }
 
     [PunRPC]
-    private void SyncStage(object[] mapTr1, object[] mapTr2){
+    private void SyncStage(object[] mapTr1, object[] mapTr2)
+    {
         Transform[] curMapTr1 = Maps[0].GetComponentsInChildren<Transform>();
         Transform[] curMapTr2 = Maps[1].GetComponentsInChildren<Transform>();
         Transform[] newMapTr1 = (Transform[])mapTr1;
@@ -151,13 +169,19 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     public void EndTurn()
     {
-        myTurn = !myTurn;
+        photonView.RPC("EndTurnRPC", RpcTarget.All);
+    }
+
+    [PunRPC]
+    private void EndTurnRPC()
+    {
+        isMyTurn = !isMyTurn;
         SetTurnFlame();
     }
 
     private void SetTurnFlame()
     {
-        if (myTurn)
+        if (isMyTurn)
         {
             foreach (var flame in turnFlames)
             {

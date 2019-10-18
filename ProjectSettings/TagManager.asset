@@ -7,8 +7,17 @@ TagManager:
   - CAMERARIG
   - RIGHTHAND
   - GRABBABLE
+  - DEBRIS
+  - LOD
+  - STONEBLOCK
+  - M_LOD
+  - M_DEBRIS
+  - M_LOD1
+  - M_LOD2
+  - GROUND
   - PLAYERSPAWNPOINT
   - MAPSPAWNPOINT
+  - TURNSTONE
   layers:
   - Default
   - TransparentFX
