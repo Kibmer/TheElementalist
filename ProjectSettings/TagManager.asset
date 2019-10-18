@@ -9,6 +9,7 @@ TagManager:
   - GRABBABLE
   - PLAYERSPAWNPOINT
   - MAPSPAWNPOINT
+  - TURNSTONE
   layers:
   - Default
   - TransparentFX

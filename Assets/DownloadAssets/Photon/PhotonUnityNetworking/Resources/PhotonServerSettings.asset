@@ -35,5 +35,10 @@ MonoBehaviour:
   - Fire
   - RespawnSpaceship
   - SyncStage
+  - EndTurnRPC
+  - MagicAttack
+  - Summon
+  - MagicAttackRPC
+  - SummonRPC
   DisableAutoOpenWizard: 1
   ShowSettings: 1
