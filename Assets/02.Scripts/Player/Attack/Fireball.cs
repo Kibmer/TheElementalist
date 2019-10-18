@@ -30,7 +30,7 @@ public class Fireball : MonoBehaviour
                 if (rb != null)
                 {
                     rb.mass = 1.0f;
-                    rb.AddExplosionForce(1000.0f, transform.position, 1.2f, 1f);
+                    rb.AddExplosionForce(1000.0f, transform.position, 1.2f, 0f);
                 }
             }
 

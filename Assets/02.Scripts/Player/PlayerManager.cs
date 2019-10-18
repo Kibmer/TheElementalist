@@ -10,9 +10,11 @@ public class PlayerManager : MonoBehaviour
     public static event OnClickEvent CloseUI;
     public static event OnClickEvent Summon;
     public static event OnClickEvent CancelAttack;
-    public static event OnClickEvent Attack;
+    public static event OnClickEvent MagicAttack;
+    public static event OnClickEvent WeaponEquip;
+    public static event OnClickEvent CannonAttack;
 
-    public static string element;
+    public static string Weapon;
 
 
     public SteamVR_Input_Sources hand = SteamVR_Input_Sources.Any;
@@ -24,32 +26,51 @@ public class PlayerManager : MonoBehaviour
     public SteamVR_Action_Boolean touchpadClick = SteamVR_Actions.default_TouchPadClick;
     public SteamVR_Action_Vector2 touchpadPos = SteamVR_Actions.default_TouchPadPos;
 
-    private string el; 
+
+
     private bool isSummon = false;
-    
+    private bool isEquip = false;    
     
     void Update()
     {
+        //UI열기
         if (touchpadClick.GetStateDown(lefthand))
         {
-            //오픈ui
             OpenUI();
         }
+        //UI닫기
         else if (touchpadClick.GetStateUp(lefthand))
         {
-            //닫기ui
             CloseUI();
         }
+        //마법 소환
         if(Trigger.GetStateDown(righthand) && (pose.GetLocalRotation(righthand).eulerAngles.z >= 230f && pose.GetLocalRotation(righthand).eulerAngles.z <= 270f ))
         {
-            //소환
-            Summon();
-            isSummon = true;
+            if(Weapon=="FIRE" || Weapon=="ICE")
+            {
+                CancelAttack();
+                Summon();
+                isSummon = true;
+                isEquip = false;
+            }
         }
-        else if(Trigger.GetStateUp(righthand) && isSummon == true)
+        //마법 공격
+        else if(isSummon == true && Trigger.GetStateUp(righthand))
         {
-            Attack();
+            MagicAttack();
             isSummon = false;
         }
+        //캐논 소환
+        if(isEquip == false && Weapon == "CANNON" && Trigger.GetStateDown(righthand))
+        {
+            CancelAttack();
+            WeaponEquip();
+            isEquip = true;
+        }
+        else if (isEquip == true && Trigger.GetStateDown(righthand))
+        {
+            CannonAttack();
+        }
+
     }
 }
