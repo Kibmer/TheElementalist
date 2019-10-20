@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Photon.Pun;
+using Photon.Realtime;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoBehaviourPunCallbacks
 {
     public delegate void OnClickEvent();
     public static event OnClickEvent OpenUI;
@@ -32,15 +34,18 @@ public class PlayerManager : MonoBehaviour
 
     void Update()
     {
-        //UI열기
-        if (touchpadClick.GetStateDown(lefthand))
+        if(photonView.IsMine)
         {
-            OpenUI();
-        }
-        //UI닫기
-        else if (touchpadClick.GetStateUp(lefthand))
-        {
-            CloseUI();
+            //UI열기
+            if (touchpadClick.GetStateDown(lefthand))
+            {
+                OpenUI();
+            }
+            //UI닫기
+            else if (touchpadClick.GetStateUp(lefthand))
+            {
+                CloseUI();
+            }
         }
         if (MGManager.instance.isMyTurn)
         {

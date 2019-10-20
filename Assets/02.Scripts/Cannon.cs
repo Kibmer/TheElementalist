@@ -34,6 +34,6 @@ public class Cannon : MonoBehaviourPunCallbacks
     private void Fire()
     {
         GameObject shot = Instantiate(roundShot, firePos.position, Quaternion.identity);
-        shot.GetComponent<Rigidbody>().AddForce(firePos.forward * 2000f);
+        shot.GetComponent<Rigidbody>().AddForce(firePos.forward * 4000f);
     }
 }
