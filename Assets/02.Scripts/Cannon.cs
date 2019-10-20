@@ -38,7 +38,7 @@ public class Cannon : MonoBehaviourPunCallbacks
     
     IEnumerator aa(GameObject shot)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
         Debug.Log(shot.GetComponent<Rigidbody>().velocity);
 
     }
