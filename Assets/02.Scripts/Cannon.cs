@@ -15,10 +15,6 @@ public class Cannon : MonoBehaviourPunCallbacks
         firePos = transform.Find("Small_cannon").Find("FirePos");
     }
 
-    void Start()
-    {
-
-    }
 
     private void Update()
     {
@@ -34,7 +30,15 @@ public class Cannon : MonoBehaviourPunCallbacks
     private void Fire()
     {
         GameObject shot = Instantiate(roundShot, firePos.position, Quaternion.identity);
-        Physics.gravity = Vector3.down*10f;
         shot.GetComponent<Rigidbody>().AddForce(firePos.forward * 4000f);
+        StartCoroutine(aa(shot));
+        
+    }
+    
+    IEnumerator aa(GameObject shot)
+    {
+        yield return new WaitForSeconds(2f);
+        Debug.Log(shot.GetComponent<Rigidbody>().velocity);
+
     }
 }
