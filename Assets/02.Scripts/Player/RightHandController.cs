@@ -40,21 +40,21 @@ public class RightHandController : MonoBehaviourPunCallbacks
     {
         if (!photonView.IsMine) return;
 
-        photonView.RPC("SummonRPC", RpcTarget.All);
+        photonView.RPC("SummonRPC", RpcTarget.All, PlayerManager.Weapon);
     }
 
     [PunRPC]
-    void SummonRPC()
+    void SummonRPC(string weaponName)
     {
         Debug.Log("Summon");
-        if (PlayerManager.Weapon == "ICE")
+        if (weaponName == "ICE")
         {
-            // CancelAttack();
+            CancelAttack();
             attack = Instantiate(prefab_iceBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
-        else if (PlayerManager.Weapon == "FIRE")
+        else if (weaponName == "FIRE")
         {
-            // CancelAttack();
+            CancelAttack();
             attack = Instantiate(prefab_fireBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
     }
