@@ -46,6 +46,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
     [PunRPC]
     void SummonRPC()
     {
+        Debug.Log("Summon");
         if (PlayerManager.Weapon == "ICE")
         {
             CancelAttack();

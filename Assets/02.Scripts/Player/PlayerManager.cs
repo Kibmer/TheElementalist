@@ -63,7 +63,6 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             //마법 공격
             else if (isSummon == true && Trigger.GetStateUp(righthand))
             {
-
                 MagicAttack();
                 isSummon = false;
                 MGManager.instance.EndTurn();
