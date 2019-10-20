@@ -20,7 +20,7 @@ public class PlayerInitializer : MonoBehaviourPunCallbacks
         else
         {
             steamVR_Behaviour_Pose_Left = transform.Find("Controller (left)").GetComponent<SteamVR_Behaviour_Pose>();
-            steamVR_Behaviour_Pose_Right = transform.Find("Controller (left)").GetComponent<SteamVR_Behaviour_Pose>();
+            steamVR_Behaviour_Pose_Right = transform.Find("Controller (right)").GetComponent<SteamVR_Behaviour_Pose>();
             steamVR_Behaviour_Pose_Left.enabled = false;
             steamVR_Behaviour_Pose_Right.enabled = false;
         }
