@@ -49,12 +49,12 @@ public class RightHandController : MonoBehaviourPunCallbacks
         Debug.Log("Summon");
         if (PlayerManager.Weapon == "ICE")
         {
-            CancelAttack();
+            // CancelAttack();
             attack = Instantiate(prefab_iceBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
         else if (PlayerManager.Weapon == "FIRE")
         {
-            CancelAttack();
+            // CancelAttack();
             attack = Instantiate(prefab_fireBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
     }
