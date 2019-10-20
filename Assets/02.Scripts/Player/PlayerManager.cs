@@ -32,9 +32,14 @@ public class PlayerManager : MonoBehaviourPunCallbacks
     private bool isSummon = false;
     private bool isEquip = false;
 
+    private void Start()
+    {
+
+    }
+
     void Update()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
             //UI열기
             if (touchpadClick.GetStateDown(lefthand))
@@ -46,40 +51,41 @@ public class PlayerManager : MonoBehaviourPunCallbacks
             {
                 CloseUI();
             }
-        }
-        if (MGManager.instance.isMyTurn)
-        {
-            //마법 소환
-            if (Trigger.GetStateDown(righthand) && (pose.GetLocalRotation(righthand).eulerAngles.z >= 230f && pose.GetLocalRotation(righthand).eulerAngles.z <= 270f))
-            {
-                if (Weapon == "FIRE" || Weapon == "ICE")
+
+            // if (MGManager.instance.isMyTurn)
+            // {
+                //마법 소환
+                if (Trigger.GetStateDown(righthand) && (pose.GetLocalRotation(righthand).eulerAngles.z >= 230f && pose.GetLocalRotation(righthand).eulerAngles.z <= 270f))
+                {
+                    if (Weapon == "FIRE" || Weapon == "ICE")
+                    {
+                        CancelAttack();
+                        Summon();
+                        isSummon = true;
+                        isEquip = false;
+                    }
+                }
+                //마법 공격
+                else if (isSummon == true && Trigger.GetStateUp(righthand))
+                {
+                    MagicAttack();
+                    isSummon = false;
+                    MGManager.instance.EndTurn();
+                }
+                //캐논 소환
+                if (isEquip == false && Weapon == "CANNON" && Trigger.GetStateDown(righthand))
                 {
                     CancelAttack();
-                    Summon();
-                    isSummon = true;
-                    isEquip = false;
+                    WeaponEquip();
+                    isEquip = true;
                 }
-            }
-            //마법 공격
-            else if (isSummon == true && Trigger.GetStateUp(righthand))
-            {
-                MagicAttack();
-                isSummon = false;
-                MGManager.instance.EndTurn();
-            }
-            //캐논 소환
-            if (isEquip == false && Weapon == "CANNON" && Trigger.GetStateDown(righthand))
-            {
-                CancelAttack();
-                WeaponEquip();
-                isEquip = true;
-            }
-            //캐논 공격
-            else if (isEquip == true && Trigger.GetStateDown(righthand))
-            {
-                CannonAttack();
-                MGManager.instance.EndTurn();
-            }
+                //캐논 공격
+                else if (isEquip == true && Trigger.GetStateDown(righthand))
+                {
+                    CannonAttack();
+                    MGManager.instance.EndTurn();
+                }
+            // }
         }
     }
 }

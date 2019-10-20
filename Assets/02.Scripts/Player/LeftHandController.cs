@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Valve.VR;
+using Photon.Pun;
 
-public class LeftHandController : MonoBehaviour
+public class LeftHandController : MonoBehaviourPunCallbacks
 {
     public SteamVR_Input_Sources hand = SteamVR_Input_Sources.Any;
     public SteamVR_Input_Sources lefthand = SteamVR_Input_Sources.LeftHand;
@@ -28,7 +29,8 @@ public class LeftHandController : MonoBehaviour
     }
     void OpenUI()
     {
-        currentUI = Instantiate(prefab_ui_element, transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0),this.transform);
+        if(photonView.IsMine)
+            currentUI = Instantiate(prefab_ui_element, transform.position, Quaternion.Euler(0, transform.rotation.eulerAngles.y, 0),this.transform);
     }
 
     void CloseUI()
