@@ -382,7 +382,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6366274074959389317
 Transform:
   m_ObjectHideFlags: 0
@@ -410,6 +410,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7458126640f82f4c83141a04e985156, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  righthand: 2
+  grab:
+    actionPath: /actions/default/in/GrabGrip
+    needsReinit: 0
+  Trigger:
+    actionPath: /actions/default/in/InteractUI
+    needsReinit: 0
+  pose:
+    actionPath: /actions/default/in/Pose
+    needsReinit: 0
+  haptic:
+    actionPath: /actions/default/out/Haptic
+    needsReinit: 0
 --- !u!1 &6365220383805829881
 GameObject:
   m_ObjectHideFlags: 0

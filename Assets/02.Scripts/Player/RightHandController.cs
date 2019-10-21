@@ -38,12 +38,11 @@ public class RightHandController : MonoBehaviourPunCallbacks
 
     void Start()
     {
-        prefab_cannon = transform.Find("Cannon_test").gameObject;
+        prefab_cannon = transform.parent.Find("Cannon_test").gameObject;
     }
     void Summon()
     {
         if (!photonView.IsMine) return;
-
         photonView.RPC("SummonRPC", RpcTarget.All, PlayerManager.Weapon);
     }
 

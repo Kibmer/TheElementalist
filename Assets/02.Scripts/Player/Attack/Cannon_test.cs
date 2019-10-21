@@ -44,6 +44,6 @@ public class Cannon_test : MonoBehaviour
     void CannonAttack()
     {
         GameObject shot = Instantiate(roundShot, firePos.position, Quaternion.identity);
-        shot.GetComponent<Rigidbody>().AddForce(firePos.forward * 2000f);
+        shot.GetComponent<Rigidbody>().AddForce(firePos.forward * 3000f);
     }
 }
