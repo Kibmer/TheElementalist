@@ -14,7 +14,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
     public GameObject prefab_ui_element;
     public GameObject prefab_fireBall;
     public GameObject prefab_iceBall;
-    public GameObject prefab_cannon;
+    private GameObject prefab_cannon;
 
     private GameObject currentUI;
     private GameObject attack;
@@ -36,22 +36,27 @@ public class RightHandController : MonoBehaviourPunCallbacks
         PlayerManager.WeaponEquip -= WeaponEquip;
     }
 
+    void Start()
+    {
+        prefab_cannon = transform.Find("Cannon_test").gameObject;
+    }
     void Summon()
     {
         if (!photonView.IsMine) return;
 
-        photonView.RPC("SummonRPC", RpcTarget.All);   
+        photonView.RPC("SummonRPC", RpcTarget.All, PlayerManager.Weapon);
     }
 
     [PunRPC]
-    void SummonRPC()
+    void SummonRPC(string weaponName)
     {
-        if (PlayerManager.Weapon == "ICE")
+        Debug.Log("Summon");
+        if (weaponName == "ICE")
         {
             CancelAttack();
             attack = Instantiate(prefab_iceBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
         }
-        else if (PlayerManager.Weapon == "FIRE")
+        else if (weaponName == "FIRE")
         {
             CancelAttack();
             attack = Instantiate(prefab_fireBall, transform.position + (Vector3.up * 0.2f), transform.rotation, this.transform);
@@ -61,27 +66,27 @@ public class RightHandController : MonoBehaviourPunCallbacks
     void MagicAttack()
     {
         if (!photonView.IsMine) return;
-        
-        Rigidbody attackRb = attack.GetComponent<Rigidbody>();
-        attackRb.velocity = pos.GetVelocity(righthand) * 3f;
 
-        photonView.RPC("MagicAttackRPC", RpcTarget.All, attack.transform ,attackRb.velocity);
+        Rigidbody attackRb = attack.GetComponent<Rigidbody>();
+        attackRb.velocity = transform.parent.TransformVector(pos.GetVelocity(righthand)) * 4f;
+
+        photonView.RPC("MagicAttackRPC", RpcTarget.All, attack.transform.position, attackRb.velocity, PlayerManager.Weapon);
     }
 
     [PunRPC]
-    void MagicAttackRPC(Vector3 pos, Vector3 vel)
+    void MagicAttackRPC(Vector3 pos, Vector3 vel, string weaponName)
     {
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
-        
+
         attackRb.isKinematic = false;
-        attack.transform.SetParent(null);
         attack.transform.position = pos;
         attackRb.velocity = vel;
-        if (PlayerManager.Weapon == "ICE")
+        attack.transform.SetParent(null);
+        if (weaponName == "ICE")
         {
             attack.GetComponent<Iceball>().enabled = true;
         }
-        else if (PlayerManager.Weapon == "FIRE")
+        else if (weaponName == "FIRE")
         {
             attack.GetComponent<Fireball>().enabled = true;
         }
@@ -92,7 +97,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
 
         prefab_cannon.SetActive(true);
     }
-    
+
     void CancelAttack()
     {
         prefab_cannon.SetActive(false);

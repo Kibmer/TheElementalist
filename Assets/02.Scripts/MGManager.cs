@@ -74,14 +74,9 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
         //카메라 리그를 생성
         cameraRigTr = PhotonNetwork.Instantiate("[CameraRig]", Vector3.zero, Quaternion.identity, 0).transform;
         GameObject[] turnStones = GameObject.FindGameObjectsWithTag("TURNSTONE");
-        foreach(var turnStone in turnStones)
+        foreach (var turnStone in turnStones)
         {
             turnFlames.Add(turnStone.GetComponentInChildren<ParticleSystem>(true).gameObject);
-        }
-        if(photonView.IsMine)
-        {
-            cameraRigTr.Find("Camera").GetComponent<Camera>().enabled = true;
-            cameraRigTr.Find("Camera").GetComponent<AudioListener>().enabled = true;
         }
 
         Debug.Log(PhotonNetwork.CountOfPlayersInRooms);
@@ -92,11 +87,13 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
             //카메라 리그를 비어있는 위치에 배치
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
+            {
                 cameraRigTr.position = playerSpawnPoint[0].transform.position;
+                cameraRigTr.Rotate(0, 180, 0);
+            }
             else
             {
                 cameraRigTr.position = playerSpawnPoint[1].transform.position;
-                cameraRigTr.Rotate(0, 180, 0);
             }
         }
         //다른 플레이어가 방에 있을때
@@ -107,17 +104,19 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
             {
                 cameraRigTr.position = playerSpawnPoint[1].transform.position;
-                cameraRigTr.Rotate(0, 180, 0);
             }
             else
+            {
                 cameraRigTr.position = playerSpawnPoint[0].transform.position;
+                cameraRigTr.Rotate(0, 180, 0);
+            }
         }
 
-        Vector3 cannonSpawnPos = new Vector3(0, 0, (cameraRigTr.TransformVector(Vector3.forward) * 1.5f).z);
-        PhotonNetwork.Instantiate("Cannon"
-                    , cameraRigTr.position + cannonSpawnPos
-                    , cameraRigTr.rotation
-                    , 0);
+        //Vector3 cannonSpawnPos = new Vector3(0, 0, (cameraRigTr.TransformVector(Vector3.forward) * 1.5f).z);
+        //PhotonNetwork.Instantiate("Cannon"
+        //            , cameraRigTr.position + cannonSpawnPos
+        //            , cameraRigTr.rotation
+        //            , 0);
 
 
         // ResetStage();
