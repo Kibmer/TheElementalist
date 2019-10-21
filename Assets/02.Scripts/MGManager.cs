@@ -89,10 +89,10 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
             {
                 cameraRigTr.position = playerSpawnPoint[0].transform.position;
-                cameraRigTr.Rotate(0, 180, 0);
             }
             else
             {
+                cameraRigTr.Rotate(0, 180, 0);
                 cameraRigTr.position = playerSpawnPoint[1].transform.position;
             }
         }
@@ -104,11 +104,11 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
             {
                 cameraRigTr.position = playerSpawnPoint[1].transform.position;
+                cameraRigTr.Rotate(0, 180, 0);
             }
             else
             {
                 cameraRigTr.position = playerSpawnPoint[0].transform.position;
-                cameraRigTr.Rotate(0, 180, 0);
             }
         }
 
