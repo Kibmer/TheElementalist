@@ -783,18 +783,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5232820394083335355}
     m_Modifications:
-    - target: {fileID: 1394192276799734, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
-      propertyPath: m_Name
-      value: leftHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394192276799734, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1394192276799734, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 4524033164030228, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -839,6 +827,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1394192276799734, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
+      propertyPath: m_Name
+      value: leftHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394192276799734, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1394192276799734, guid: 7818d5a3aeddace4ebe861fe3c939778, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 23256539597736150, guid: 7818d5a3aeddace4ebe861fe3c939778,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -864,16 +864,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 504351975611143829}
     m_Modifications:
-    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
-        type: 3}
-      propertyPath: m_Name
-      value: Turn_Stone2
-      objectReference: {fileID: 0}
-    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
-        type: 3}
-      propertyPath: m_TagString
-      value: TURNSTONE
-      objectReference: {fileID: 0}
     - target: {fileID: 376130344480644728, guid: 786bf71877289c14694d4650377367cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -929,6 +919,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Turn_Stone2
+      objectReference: {fileID: 0}
+    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: TURNSTONE
+      objectReference: {fileID: 0}
     - target: {fileID: 2115397960961131921, guid: 786bf71877289c14694d4650377367cb,
         type: 3}
       propertyPath: m_IsActive
@@ -954,18 +954,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5232820394036394793}
     m_Modifications:
-    - target: {fileID: 1190682958899308, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
-      propertyPath: m_Name
-      value: rightHand
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190682958899308, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1190682958899308, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
-      propertyPath: m_TagString
-      value: Untagged
-      objectReference: {fileID: 0}
     - target: {fileID: 4455454299340976, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1010,6 +998,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1190682958899308, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
+      propertyPath: m_Name
+      value: rightHand
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190682958899308, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1190682958899308, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 1672554144796342, guid: 3578e81750c3b264b93ab5a847f6d906, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -1049,16 +1049,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 504351975611143829}
     m_Modifications:
-    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
-        type: 3}
-      propertyPath: m_Name
-      value: Turn_Stone1
-      objectReference: {fileID: 0}
-    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
-        type: 3}
-      propertyPath: m_TagString
-      value: TURNSTONE
-      objectReference: {fileID: 0}
     - target: {fileID: 376130344480644728, guid: 786bf71877289c14694d4650377367cb,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1113,6 +1103,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
+        type: 3}
+      propertyPath: m_Name
+      value: Turn_Stone1
+      objectReference: {fileID: 0}
+    - target: {fileID: 372582051369037538, guid: 786bf71877289c14694d4650377367cb,
+        type: 3}
+      propertyPath: m_TagString
+      value: TURNSTONE
       objectReference: {fileID: 0}
     - target: {fileID: 2115397960961131921, guid: 786bf71877289c14694d4650377367cb,
         type: 3}
