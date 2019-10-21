@@ -18,6 +18,13 @@ TagManager:
   - PLAYERSPAWNPOINT
   - MAPSPAWNPOINT
   - TURNSTONE
+  - WOODENBLOCK
+  - ORC
+  - ICEEXPLOSION
+  - FIREEXPLOSION
+  - SHOT
+  - ORC1
+  - ORC2
   layers:
   - Default
   - TransparentFX
