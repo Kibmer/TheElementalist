@@ -14,7 +14,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
     public GameObject prefab_ui_element;
     public GameObject prefab_fireBall;
     public GameObject prefab_iceBall;
-    public GameObject prefab_cannon;
+    private GameObject prefab_cannon;
 
     private GameObject currentUI;
     private GameObject attack;
@@ -36,6 +36,10 @@ public class RightHandController : MonoBehaviourPunCallbacks
         PlayerManager.WeaponEquip -= WeaponEquip;
     }
 
+    void Start()
+    {
+        prefab_cannon = transform.Find("Cannon_test").gameObject;
+    }
     void Summon()
     {
         if (!photonView.IsMine) return;
