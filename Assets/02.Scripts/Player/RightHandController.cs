@@ -49,7 +49,6 @@ public class RightHandController : MonoBehaviourPunCallbacks
     [PunRPC]
     void SummonRPC(string weaponName)
     {
-        Debug.Log("Summon");
         if (weaponName == "ICE")
         {
             CancelAttack();
@@ -93,9 +92,17 @@ public class RightHandController : MonoBehaviourPunCallbacks
 
     void WeaponEquip()
     {
+        if (!photonView.IsMine) return;
 
+        photonView.RPC("WeaponEquipRPC", RpcTarget.All, null);
+    }
+
+    [PunRPC]
+    void WeaponEquipRPC()
+    {
         prefab_cannon.SetActive(true);
     }
+
 
     void CancelAttack()
     {
@@ -106,4 +113,5 @@ public class RightHandController : MonoBehaviourPunCallbacks
             Destroy(attack);
         }
     }
+
 }

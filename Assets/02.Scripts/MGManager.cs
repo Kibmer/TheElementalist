@@ -18,15 +18,15 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
     public bool isMyTurn = false;
     private List<GameObject> turnFlames;
 
-    public OrcMgr orcMgr = GameObject.Find("Orc").GetComponent<OrcMgr>(); //?
+    //public OrcMgr orcMgr = GameObject.Find("Orc").GetComponent<OrcMgr>(); //?
 
     public void Win()
     {
-        if(orcMgr.orcCount == 0)
-        {
-            /////////////////////////////////////////////////////
-            /////////////////////////////////////////////////////
-        }
+        //if(orcMgr.orcCount == 0)
+        //{
+        //    /////////////////////////////////////////////////////
+        //    /////////////////////////////////////////////////////
+        //}
     }
 
     public override void OnEnable()
