@@ -5,12 +5,15 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     public GameObject prefab_FireExplosion;
+    private AudioSource fireSound;
 
     private bool play = false;
 
     private void Start()
     {
         play = true;
+        fireSound = GetComponent<AudioSource>();
+        fireSound.Play();
     }
 
 
