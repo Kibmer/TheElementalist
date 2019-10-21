@@ -64,7 +64,7 @@ public class RightHandController : MonoBehaviourPunCallbacks
         if (!photonView.IsMine) return;
 
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
-        attackRb.velocity = pos.GetVelocity(righthand) * 3f;
+        attackRb.velocity = pos.GetVelocity(righthand) * 4f;
 
         photonView.RPC("MagicAttackRPC", RpcTarget.All, attack.transform.position, attackRb.velocity, PlayerManager.Weapon);
     }
@@ -75,9 +75,9 @@ public class RightHandController : MonoBehaviourPunCallbacks
         Rigidbody attackRb = attack.GetComponent<Rigidbody>();
 
         attackRb.isKinematic = false;
-        attack.transform.SetParent(null);
         attack.transform.position = pos;
         attackRb.velocity = vel;
+        attack.transform.SetParent(null);
         if (weaponName == "ICE")
         {
             attack.GetComponent<Iceball>().enabled = true;

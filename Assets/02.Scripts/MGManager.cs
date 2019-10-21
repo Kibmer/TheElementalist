@@ -80,7 +80,7 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             else
             {
                 cameraRigTr.position = playerSpawnPoint[1].transform.position;
-                cameraRigTr.Rotate(0, 180, 0);
+                //cameraRigTr.Rotate(0, 180, 0);
             }
         }
         //다른 플레이어가 방에 있을때
@@ -91,17 +91,17 @@ public class MGManager : MonoBehaviourPunCallbacks, IInRoomCallbacks
             if ((bool)PhotonNetwork.CurrentRoom.CustomProperties["Ppos"])
             {
                 cameraRigTr.position = playerSpawnPoint[1].transform.position;
-                cameraRigTr.Rotate(0, 180, 0);
+                //cameraRigTr.Rotate(0, 180, 0);
             }
             else
                 cameraRigTr.position = playerSpawnPoint[0].transform.position;
         }
 
-        Vector3 cannonSpawnPos = new Vector3(0, 0, (cameraRigTr.TransformVector(Vector3.forward) * 1.5f).z);
-        PhotonNetwork.Instantiate("Cannon"
-                    , cameraRigTr.position + cannonSpawnPos
-                    , cameraRigTr.rotation
-                    , 0);
+        //Vector3 cannonSpawnPos = new Vector3(0, 0, (cameraRigTr.TransformVector(Vector3.forward) * 1.5f).z);
+        //PhotonNetwork.Instantiate("Cannon"
+        //            , cameraRigTr.position + cannonSpawnPos
+        //            , cameraRigTr.rotation
+        //            , 0);
 
 
         // ResetStage();
