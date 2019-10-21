@@ -230,9 +230,6 @@ MonoBehaviour:
   MapPrefab: {fileID: 3285811493525643552, guid: e5318190492e30843bf68c5218e5ddc0,
     type: 3}
   isMyTurn: 0
-  turnFlames:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &544768844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -397,7 +394,7 @@ GameObject:
   - component: {fileID: 1372325185}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: GROUND
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

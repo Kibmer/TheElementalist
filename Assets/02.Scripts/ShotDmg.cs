@@ -21,6 +21,10 @@ public class ShotDmg : MonoBehaviour
         {
             coll.gameObject.GetComponent<WoodenBlockMgr>().w_blockHP = 0;
         }
-        Debug.Log(shotVelocity);
+        if(coll.collider.CompareTag("GROUND"))
+        {
+            Destroy(this.gameObject,2f);
+        }
+        Destroy(this.gameObject,10f);
     }
 }
