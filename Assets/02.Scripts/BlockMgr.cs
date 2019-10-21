@@ -74,7 +74,7 @@ public class BlockMgr : MonoBehaviour
         if (blockHP <= 0)
         {
             Explosion();
-            Destroy(p_debris, 1.0f);
+            Destroy(p_debris, 2.0f);
         }
     }
    

@@ -14427,8 +14427,8 @@ GameObject:
   - component: {fileID: 2934129101085402855}
   - component: {fileID: 6984515991249508591}
   m_Layer: 0
-  m_Name: Fireball
-  m_TagString: Untagged
+  m_Name: FireBall
+  m_TagString: FIREEXPLOSION
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -8,7 +8,7 @@ public class ShotDmg : MonoBehaviour
 
     private void Update()
     {
-    shotVelocity = gameObject.GetComponent<Rigidbody>().velocity.magnitude;
+        shotVelocity = gameObject.GetComponent<Rigidbody>().velocity.magnitude;
     }
 
     private void OnCollisionEnter(Collision coll)
@@ -16,6 +16,10 @@ public class ShotDmg : MonoBehaviour
         if (coll.collider.CompareTag("STONEBLOCK"))
         {
             coll.gameObject.GetComponent<BlockMgr>().blockHP = 0;
+        }
+        else if(coll.collider.CompareTag("WOODENBLOCK"))
+        {
+            coll.gameObject.GetComponent<WoodenBlockMgr>().w_blockHP = 0;
         }
         Debug.Log(shotVelocity);
     }
