@@ -9,6 +9,10 @@ public class OrcMgr : MonoBehaviour
 
     public int orcCount = 3;
     public GameObject p_blood;
+
+    private void Start()
+    {
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("FIREEXPLOSION")
@@ -18,6 +22,7 @@ public class OrcMgr : MonoBehaviour
         {
             orcCount -= 1;
             Instantiate(p_blood,transform.position + Vector3.up * 1.5f, Quaternion.identity);
+
             gameObject.SetActive(false);
         }
     }
