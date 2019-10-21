@@ -16,6 +16,7 @@ public class PlayerInitializer : MonoBehaviourPunCallbacks
         {
             transform.Find("Camera").GetComponent<Camera>().enabled = true;
             transform.Find("Camera").GetComponent<AudioListener>().enabled = true;
+            transform.Find("Camera").GetComponent<AudioSource>().enabled = true;
         }
         else
         {
