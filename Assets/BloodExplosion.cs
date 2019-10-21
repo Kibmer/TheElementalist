@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class BloodExplosion : MonoBehaviour
 {
+    private AudioSource orcSream;
+
     void Start()
     {
-        Destroy(this.gameObject, 5f);
+        orcSream = GetComponent<AudioSource>();
+        orcSream.Play();
+        //Destroy(this.gameObject, 5f);
     }
 }

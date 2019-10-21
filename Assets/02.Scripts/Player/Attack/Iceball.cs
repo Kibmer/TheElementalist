@@ -5,12 +5,15 @@ using UnityEngine;
 public class Iceball : MonoBehaviour
 {
     public GameObject prefab_IceExplosion;
+    private AudioSource fireSound;
 
     private bool play = false;
 
     private void Start()
     {
         play = true;
+        fireSound = GetComponent<AudioSource>();
+        fireSound.Play();
     }
 
     private void OnTriggerEnter(Collider other)
